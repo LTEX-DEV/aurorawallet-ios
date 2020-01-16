@@ -1,0 +1,10 @@
+[submodule "Modules/unbound"]
+	path = Modules/unbound
+	url = https://github.com/breadwallet/unbound.git
+[submodule "Modules/nettle"]
+	path = Modules/nettle
+	url = https://github.com/breadwallet/nettle.git
+[submodule "Modules/dns"]
+	path = Modules/dns
+	url = https://github.com/wahern/dns.git
+
