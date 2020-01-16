@@ -8,3 +8,6 @@
 	path = Modules/dns
 	url = https://github.com/wahern/dns.git
 
+[submodule "Modules/aurorawallet-core"]
+	path = Modules/aurorawallet-core
+	url = https://github.com/LTEX-DEV/aurorawallet-core.git
