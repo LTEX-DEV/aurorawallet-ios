@@ -10,12 +10,12 @@ import UIKit
 import AVFoundation
 
 typealias ScanCompletion = (PaymentRequest?) -> Void
-//removed typealias DigiIDScanCompletion = (DigiIdRequest?) -> Void
+
 typealias KeyScanCompletion = (String) -> Void
 
 enum ScanViewType {
     case payment
-    //removed case digiid
+    
 }
 
 class ScanViewController : UIViewController, Trackable {
@@ -36,7 +36,7 @@ class ScanViewController : UIViewController, Trackable {
     }
 
     let completion: ScanCompletion?
-    // removedlet digiIdCompletion: DigiIDScanCompletion?
+    
     let scanKeyCompletion: KeyScanCompletion?
     let isValidURI: (String) -> Bool
 
@@ -51,9 +51,9 @@ class ScanViewController : UIViewController, Trackable {
     // this constructor was added to support DigiId. It switches the scan mode to .digiid, and does basically the same
     // as the other constructors. It does not create a Payment class instance, to check whether the scanned url is valid.
     // Instead of using PaymentRequest, it does it with DigiIdRequest.
-    init(/* removed digiIdCompletion: @escaping DigiIDScanCompletion,*/ isValidURI: @escaping (String) -> Bool) {
+    init( isValidURI: @escaping (String) -> Bool) {
        self.scanViewType = .payment
-       //removed self.digiIdCompletion = digiIdCompletion
+      
         self.scanKeyCompletion = nil
         self.isValidURI = isValidURI
         self.completion = nil
@@ -64,7 +64,7 @@ class ScanViewController : UIViewController, Trackable {
     init(completion: @escaping ScanCompletion, isValidURI: @escaping (String) -> Bool) {
         scanViewType = .payment
         self.completion = completion
-       //removed self.digiIdCompletion = nil
+       
         self.scanKeyCompletion = nil
         self.isValidURI = isValidURI
         super.init(nibName: nil, bundle: nil)
@@ -73,7 +73,7 @@ class ScanViewController : UIViewController, Trackable {
     init(scanKeyCompletion: @escaping KeyScanCompletion, isValidURI: @escaping (String) -> Bool) {
         scanViewType = .payment
         self.scanKeyCompletion = scanKeyCompletion
-       //removed self.digiIdCompletion = nil
+       
         self.completion = nil
         self.isValidURI = isValidURI
         super.init(nibName: nil, bundle: nil)
@@ -135,19 +135,7 @@ class ScanViewController : UIViewController, Trackable {
             })
         }
         
-       /* removed if scanViewType == .digiid {
-            let logo = UIImageView(image: #imageLiteral(resourceName: "Digi-id-icon").withRenderingMode(.alwaysTemplate))
-            logo.contentMode = .scaleAspectFit
-            logo.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
-            view.addSubview(logo)
-            
-            logo.constrain([
-                logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-                logo.bottomAnchor.constraint(equalTo: guide.topAnchor, constant: -20),
-                logo.centerXAnchor.constraint(equalTo: guide.centerXAnchor),
-                logo.widthAnchor.constraint(equalToConstant: 80)
-            ])
-        } */
+      
 
         addCameraPreview()
     }
@@ -224,7 +212,7 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
             } else {
                 data.forEach {
                     guard let uri = $0.stringValue else { return }
-                    if completion != nil /* removed || digiIdCompletion != nil*/ {
+                    if completion != nil  {
                         handleURI(uri)
                     } else if scanKeyCompletion != nil {
                         handleKey(uri)
@@ -251,18 +239,7 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
                         guide.state = .negative
                     }
 
-                /* removed case .digiid:
-                    if let digiIdRequest = DigiIdRequest(string: uri) {
-                        guide.state = .positive
-                        //Add a small delay so the green guide will be seen
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                            self.dismiss(animated: true, completion: {
-                                self.digiIdCompletion?(digiIdRequest)
-                            })
-                        })
-                    } else {
-                        guide.state = .negative
-                    } */
+                
             }
             
             self.currentUri = uri

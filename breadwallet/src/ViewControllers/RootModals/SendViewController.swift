@@ -46,7 +46,7 @@ class SendViewController : UIViewController, UIImagePickerControllerDelegate, UI
         self.addressCell = AddressCell(showAddressBookButton: true, addressBookCallback: { [unowned self] in
             // Show address book (modal selector)
             let vc = AddressBookOverviewViewController()
-            vc.view.backgroundColor = UIColor(red: 0x00 / 255, green: 0x88 / 255, blue: 0x6f / 255, alpha: 1) // #15151F //00886f
+            vc.view.backgroundColor = UIColor(red: 0x02 / 255, green: 0xBB / 255, blue: 0x9D / 255, alpha: 1) // #15151F //02BB9D
             
             // Use a Bread modal window
             let root = ModalViewController(childViewController: vc, store: store)

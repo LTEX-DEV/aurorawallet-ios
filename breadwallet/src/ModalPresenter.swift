@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-// removed typealias PresentDigiIdScan = ((@escaping DigiIDScanCompletion) -> Void)
+
 
 class ModalPresenter : Subscriber, Trackable {
 
@@ -99,9 +99,7 @@ class ModalPresenter : Subscriber, Trackable {
         store.subscribe(self, name: .scanQr, callback: { _ in
             self.handleScanQrURL()
         })
-        /*removed store.subscribe(self, name: .scanDigiId, callback: { _ in
-            self.handleDigiIdScanQrURL()
-        }) */
+        
         store.subscribe(self, name: .copyWalletAddresses(nil, nil), callback: {
             guard let trigger = $0 else { return }
             if case .copyWalletAddresses(let success, let error) = trigger {
@@ -362,14 +360,7 @@ class ModalPresenter : Subscriber, Trackable {
         return root
     }
     
-  /* removed  private func presentDigiIdScan() {
-        guard let top = topViewController else { return }
-        let present = presentScan(parent: top)
-        store.perform(action: RootModalActions.Present(modal: .none))
-        present({ digiIdUrl in
-            print(digiIdUrl?.toAddress)
-        })
-    } */
+
 
     func presentLoginScan() {
         guard let top = topViewController else { return }
@@ -381,59 +372,7 @@ class ModalPresenter : Subscriber, Trackable {
             self.presentModal(.send)
         })
     }
-    
-   /* removed private func presentLoginScanForDigiId() {
-        guard let top = topViewController else { return }
-        let present = presentDigiIdScan(parent: top)
-        store.perform(action: RootModalActions.Present(modal: .none))
-        present({ digiIdRequest in
-            guard let request = digiIdRequest else { return }
-            let url = URL(string: request.signString)
-            
-            if let signMessage = url {
-                let bitId: BRDigiID = BRDigiID(url: signMessage, walletManager: self.walletManager!)
-                bitId.runCallback(store: self.store, { (data, response, error) in
-                    if let resp = response as? HTTPURLResponse, error == nil && resp.statusCode >= 200 && resp.statusCode < 300 {
-                        let senderAppInfo = getSenderAppInfo(request: request)
-                        if senderAppInfo.unknownApp {
-                            // we can not open the sender app again, we will just display a messagebox
-                            let alert = UIAlertController(title: S.DigiID.success, message: nil, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: S.Button.ok, style: .default, handler: nil))
-                            DispatchQueue.main.async { alert.show() }
-                        } else {
-                            // open the sender app
-                            if let u = URL(string: senderAppInfo.appURI) {
-                                DispatchQueue.main.async { UIApplication.shared.openURL(u) }
-                            }
-                        }
-                    } else {
-                        let statusCode = (response as? HTTPURLResponse)?.statusCode
-                        let additionalInformation = statusCode != nil ? "\(statusCode!)" : ""
-                        
-                        let errorInformation: String = {
-                            guard let data = data else { return S.DigiID.errorMessage }
-                            do {
-                                // check if server gave json response in format { message: <error description> }
-                                let json = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                return json["message"] as! String
-                            } catch {
-                                // just return response as string
-                                if let s = String(data: data, encoding: String.Encoding.utf8), s.count > 0 {
-                                    return s
-                                }
-                                return S.DigiID.errorMessage
-                            }
-                        }()
-                        
-                        // show alert controller and display error description
-                        let alert = UIAlertController(title: S.DigiID.error, message: "\(errorInformation).\n\n\(additionalInformation)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: S.Button.ok, style: .default, handler: nil))
-                        DispatchQueue.main.async { alert.show() }
-                    }
-                })
-            }
-        })
-    } */
+
 
     private func makeSettings() {
         guard let top = topViewController else { return }
@@ -606,30 +545,7 @@ class ModalPresenter : Subscriber, Trackable {
         }
     }
     
-   /* removed private func presentDigiIdScan(parent: UIViewController) -> PresentDigiIdScan {
-        return { [weak parent] scanCompletion in
-            // check whether camera privileges are available
-            guard ScanViewController.isCameraAllowed else {
-                if let parent = parent {
-                    ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-                }
-                return
-            }
-
-            // open scanner
-            let vc = ScanViewController(digiIdCompletion: { digiIdRequest in
-                scanCompletion(digiIdRequest)
-                parent?.view.isFrameChangeBlocked = false
-            }, isValidURI: { address in
-                print("DIGIID", address)
-                print("DIGIID", address.urlEscapedString)
-            
-                return address.isValidAddress
-            })
-            parent?.view.isFrameChangeBlocked = true
-            parent?.present(vc, animated: true, completion: {})
-        }
-    } */
+ 
 
     private func makeSecurityCenter() {
         guard let walletManager = walletManager else { return }
@@ -871,19 +787,7 @@ class ModalPresenter : Subscriber, Trackable {
         }
     }
     
-    /* removedprivate func handleDigiIdScanQrURL() {
-        guard !store.state.isLoginRequired else { presentLoginScanForDigiId(); return }
-        
-        if topViewController is AccountViewController || topViewController is LoginViewController {
-            presentLoginScanForDigiId()
-        } else {
-            if let presented = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController {
-                presented.dismiss(animated: true, completion: {
-                    self.presentLoginScanForDigiId()
-                })
-            }
-        }
-    } */
+    
 
     private func handleCopyAddresses(success: String?, error: String?) {
         guard let walletManager = walletManager else { return }

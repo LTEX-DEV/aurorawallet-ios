@@ -426,7 +426,7 @@ enum S {
         static let settings = NSLocalizedString("MenuButton.settings", value:"Settings", comment: "Menu button title")
         static let lock = NSLocalizedString("MenuButton.lock", value:"Lock Wallet", comment: "Menu button title")
         static let report = NSLocalizedString("MenuButton.report", value: "Report Bug", comment: "Report Bug title")
-        // removed static let digiid = "DigiID"
+        
     }
 
     enum MenuViewController {

@@ -450,7 +450,7 @@ fileprivate class AddressBookSearchBar: UITextField {
         font = UIFont.systemFont(ofSize: 14)
         
         // add search bar text
-        let placeholderColor = UIColor(red: 0x00 / 255, green: 0x88 / 255, blue: 0x6f / 255, alpha: 1.0) // 71 73 108  //00886f
+        let placeholderColor = UIColor(red: 0x47 / 255, green: 0x49 / 255, blue: 0x6C / 255, alpha: 1.0) // 47 49 6c  //00886f
         let placeholder = NSMutableAttributedString(string: S.AddressBook.searchPlaceholder)
         placeholder.addAttribute(NSAttributedStringKey.foregroundColor, value: placeholderColor, range: NSRange(location:0,length: placeholder.length))
         placeholder.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 14), range: NSRange(location:0,length: placeholder.length))

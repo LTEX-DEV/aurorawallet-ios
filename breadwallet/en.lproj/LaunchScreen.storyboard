@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-8r-F6s" userLabel="BackgroundView">
+                                <rect key="frame" x="0.0" y="-8" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DigiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="jUk-zo-wxl">
+                                        <rect key="frame" x="91" y="72" width="192" height="420"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="auroracoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVE-mG-iTb">
+                                        <rect key="frame" x="27" y="435" width="320" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="60"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jUk-zo-wxl" firstAttribute="top" secondItem="Wfb-8r-F6s" secondAttribute="top" constant="72" id="0fk-Ut-cud"/>
+                                    <constraint firstItem="jUk-zo-wxl" firstAttribute="centerY" secondItem="Wfb-8r-F6s" secondAttribute="centerY" constant="-51.5" id="7kn-Mz-9Mm"/>
+                                    <constraint firstItem="jUk-zo-wxl" firstAttribute="width" secondItem="Wfb-8r-F6s" secondAttribute="width" constant="-183" id="bkU-Hc-7lX"/>
+                                    <constraint firstItem="jUk-zo-wxl" firstAttribute="centerX" secondItem="Wfb-8r-F6s" secondAttribute="centerX" id="dw5-Di-O4Q"/>
+                                    <constraint firstItem="jUk-zo-wxl" firstAttribute="centerX" secondItem="Wfb-8r-F6s" secondAttribute="centerX" id="iaM-hr-QD9"/>
+                                    <constraint firstAttribute="bottom" secondItem="jUk-zo-wxl" secondAttribute="bottom" constant="175" id="q6z-hI-oMM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0039215686274509803" green="0.41176470588235292" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Wfb-8r-F6s" secondAttribute="trailing" id="7Ue-39-0rg"/>
+                            <constraint firstItem="Wfb-8r-F6s" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Gke-0C-pqg"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Wfb-8r-F6s" secondAttribute="bottom" id="UY6-92-drk"/>
+                            <constraint firstItem="Wfb-8r-F6s" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="iha-1L-Qm0"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-167.19999999999999" y="287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DigiLogo" width="216" height="236"/>
+    </resources>
+</document>

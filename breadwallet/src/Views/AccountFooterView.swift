@@ -563,7 +563,7 @@ class AccountFooterView: UIView {
     var sendCallback: (() -> Void)?
     var receiveCallback: (() -> Void)?
     var menuCallback: (() -> Void)?
-   // removed var digiIDCallback: (() -> Void)?
+   
     var addressBookCallback: (() -> Void)?
 //    var showAddressCallback: (() -> Void)?
     var qrScanCallback: (() -> Void)?
@@ -684,7 +684,7 @@ class AccountFooterView: UIView {
             qrButton.heightAnchor.constraint(equalToConstant: 40),
         ])
         
-         //removed digiIDButton.tap = digiid
+        
         qrButton.tap = qrscan
         
         addSubview(backgroundView)
@@ -722,7 +722,7 @@ class AccountFooterView: UIView {
     @objc private func send() { sendCallback?() }
     @objc private func receive() { receiveCallback?() }
     @objc private func menu() { menuCallback?() }
-   //removed @objc private func digiid() { digiIDCallback?() }
+   
     @objc private func qrscan() { qrScanCallback?() }
     
     required init(coder aDecoder: NSCoder) {

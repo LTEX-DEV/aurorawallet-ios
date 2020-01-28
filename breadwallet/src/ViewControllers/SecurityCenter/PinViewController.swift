@@ -367,7 +367,7 @@ class LoginViewController: PINViewController, Trackable {
         addSubviews()
         addConstraints()
         addBiometricsButton()
-       //removed addDigiIDButton()
+       
         addPinPadCallback()
         setData()
         
@@ -404,12 +404,7 @@ class LoginViewController: PINViewController, Trackable {
         })
     }
     
-   /* removed private func addDigiIDButton() {
-        digiIdButton.setImage(UIImage(named: "DigiID-Logo"), for: .normal)
-        digiIdButton.tap = {
-            self.walletManager?.store.trigger(name: .scanDigiId)
-        }
-    } */
+   
     
     private func addPinPadCallback() {
         pinPad.ouputDidUpdate = { [weak self] pin in

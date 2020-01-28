@@ -341,9 +341,7 @@ class ApplicationController : Subscriber, Trackable {
             self.store.perform(action: RootModalActions.Present(modal: .showAddressBook))
         }
         
-       /* removed accountViewController?.digiIDCallback = {
-            self.store.trigger(name: .scanDigiId)
-        } */
+     
         
         accountViewController?.scanCallback = {
             self.modalPresenter?.presentLoginScan()

@@ -679,11 +679,7 @@ class AccountViewController: UIViewController, Subscriber, UIPageViewControllerD
         didSet { footerView.menuCallback = menuCallback }
     }
     
-   /*removed var digiIDCallback: (() -> Void)? {
-        didSet {
-            footerView.digiIDCallback = digiIDCallback
-        }
-    } */
+   
     
     var scanCallback: (() -> Void)? {
         didSet {
@@ -970,7 +966,7 @@ class AccountViewController: UIViewController, Subscriber, UIPageViewControllerD
             hamburgerMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
 
-        hamburgerMenuView.backgroundColor = .black
+        hamburgerMenuView.backgroundColor = UIColor(red: 0x00 / 255, green: 0x88 / 255, blue: 0x6f / 255, alpha: 1) //black //00886f
         
         let tapper = UITapGestureRecognizer()
         tapper.numberOfTapsRequired = 1
@@ -1081,7 +1077,7 @@ class AccountViewController: UIViewController, Subscriber, UIPageViewControllerD
     }
     
     private func addSubviews() {
-#if REBRAND
+#if REBRAND //removed
         
         /* just display a Digi-ID logo that, when pressed, launches camera */
         let digiIDImage = UIImageView(image: #imageLiteral(resourceName: "DigiID-Logo"))
